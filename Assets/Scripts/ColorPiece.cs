@@ -27,7 +27,7 @@ public class ColorPiece : MonoBehaviour
 
     public ColorSprite[] colorSprites;
 
-    public ColorType color;
+    ColorType color;
 
     public ColorType Color {
         get { return color; }

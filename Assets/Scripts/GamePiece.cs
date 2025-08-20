@@ -16,6 +16,7 @@ public class GamePiece : MonoBehaviour
                 x = value;
             } }
     }
+
     public int Y { 
         get { return y; }
         set
@@ -45,10 +46,17 @@ public class GamePiece : MonoBehaviour
         get { return colorComponent; }
     }
 
+    ClearablePiece clearableComponent;
+    public ClearablePiece ClearableComponent
+    {
+        get { return clearableComponent; }
+    }
+
     private void Awake()
     {
         movableComponent=GetComponent<MovablePiece>();
         colorComponent=GetComponent<ColorPiece>();
+        clearableComponent = GetComponent<ClearablePiece>();
     }
 
     public void Init(int _x,int _y,Grid _grid,Grid.PieceType _type)
@@ -81,6 +89,11 @@ public class GamePiece : MonoBehaviour
 
     public bool IsColored()
     {
-        return colorComponent != null; // boþ deðilse hareket edebilir demek ve true döner
+        return colorComponent != null; 
+    }
+
+    public bool IsClearable()
+    {
+        return clearableComponent != null; 
     }
 }
