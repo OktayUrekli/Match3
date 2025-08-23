@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4093598862248703981}
   - component: {fileID: 6191156608170551389}
+  - component: {fileID: 4610187158806145668}
+  - component: {fileID: 4940806113699351457}
   m_Layer: 0
   m_Name: BublePiecePrefab(Obstacle)
   m_TagString: Untagged
@@ -129,3 +131,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2249d6d2df1aa8b4d9763af01ceb6a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 500
+--- !u!114 &4610187158806145668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5921763379640014653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e4fbd74eb2dc448a24eaa831cda372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearAnimation: {fileID: 7400000, guid: da33978061b49e847811f45fa35e0ddb, type: 2}
+--- !u!95 &4940806113699351457
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5921763379640014653}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b24183f913ae5df4f817e68fe8da6de1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

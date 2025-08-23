@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GamePiece : MonoBehaviour
 {
+    public int score;
+
     int x;
     int y;
 
