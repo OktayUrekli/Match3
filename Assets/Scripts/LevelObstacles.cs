@@ -12,7 +12,9 @@ public class LevelObstacles : Level
     private void Start()
     {
         type = LevelType.OBSTACLE;
-
+        hud.SetLevelType(type);
+        hud.SetScore(currentScore);
+        hud.SetReamining(numMoves);
         for (int i = 0; i <obstacleTypes.Length ; i++)
         {
             numObstaclesLeft += grid.GetPiecesOfType(obstacleTypes[i]).Count;
@@ -23,7 +25,7 @@ public class LevelObstacles : Level
     {
         movesUsed++;
 
-        Debug.Log("Remaining moves: " + (numMoves - movesUsed).ToString());
+        hud.SetReamining((numMoves - movesUsed));
 
         if (numMoves-movesUsed==0 && numObstaclesLeft>0)
         {
@@ -40,10 +42,11 @@ public class LevelObstacles : Level
             if (obstacleTypes[i]==piece.Type)
             {
                 numObstaclesLeft--;
+                 
                 if (numObstaclesLeft==0)
                 {
                     currentScore += 1000*(numMoves-movesUsed);
-                    Debug.Log("current score: "+currentScore);
+                    hud.SetScore(currentScore);
                     GameWin();
                 }
             }

@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
@@ -52,6 +50,9 @@ public class Grid : MonoBehaviour
     GamePiece enteredPiece; // ilk konuma geçirilmesi istenen ikinci obje -- son konum
 
     bool gameOver=false;
+
+    bool isFilling=false;
+    public bool IsFilling  { get { return isFilling; } }
 
     void Awake()
     {
@@ -111,6 +112,7 @@ public class Grid : MonoBehaviour
     public IEnumerator Fill()
     {
         bool needsRefill = true;
+        isFilling = true;
 
         while (needsRefill)
         {
@@ -122,6 +124,8 @@ public class Grid : MonoBehaviour
             }
             needsRefill = ClearAllValidMatches();
         }
+
+        isFilling = false;
     }
 
     public bool FillStep()
@@ -224,12 +228,14 @@ public class Grid : MonoBehaviour
     
     public Vector2 GetWorldPosition(int x,int y)
     {
-        //return new Vector2 (transform.position.x-xDim/2.0f+x,
-        //    transform.position.y+yDim/2.0f-y
-        //    );
-        return new Vector2(transform.position.x - 4 + x,
-            transform.position.y + 4- y
+        return new Vector2(transform.position.x - xDim / 2.0f + x,
+            transform.position.y + yDim / 2.0f - y
             );
+
+        // aþaðýdaki kod 9*9 grid için yazýlmýþtý
+        //return new Vector2(transform.position.x - 4 + x,
+        //    transform.position.y + 4- y
+        //    );
     }
 
     public GamePiece SpawnNewPiece(int x,int y,PieceType type) // istenilen konumda istenilen türde parça oluþturan metot

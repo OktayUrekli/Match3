@@ -12,20 +12,23 @@ public class LevelMoves : Level
     private void Start()
     {
         type = LevelType.MOVES;
-       
+        hud.SetLevelType(type);
+        hud.SetScore(currentScore);
+        hud.SetReamining(numMoves);
     }
 
     public override void OnMove()
     {
         movesUsed++;
 
-        Debug.Log("Moves Remaining " + (numMoves - movesUsed).ToString());
+
+        hud.SetReamining((numMoves - movesUsed));
 
         if (numMoves - movesUsed==0) 
         {
             if (currentScore>=targetScore)
             {
-
+                GameWin();
             }
             else
             {

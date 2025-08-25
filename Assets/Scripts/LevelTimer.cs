@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelTimer : Level
@@ -13,37 +12,69 @@ public class LevelTimer : Level
     void Start()
     {
         type=LevelType.TIMER;
+        hud.SetLevelType(type);
+        hud.SetScore(currentScore);
+        hud.SetReamining(string.Format("{0}:{1:00}",timeInSecond/60,timeInSecond%60));
+
+        StartCoroutine(CountdownTimer());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer += Time.deltaTime;
+    
 
-        if (!timeOut)
+    //void Update()
+    //{
+    //    timer += Time.deltaTime;
+    //    hud.SetReamining(string.Format("{0}:{1}", (int)Mathf.Max((timeInSecond - timer) / 60,0), (int)Mathf.Max((timeInSecond - timer) / 60, 0) % 60));
+
+    //    if (!timeOut)
+    //    {
+    //        if (timeInSecond - timer <= 0)
+    //        {
+    //            timeOut = true;
+    //            if (currentScore >= targetScore)
+    //            {
+    //                hud.SetScore(currentScore);
+    //                GameWin();
+    //            }
+    //            else
+    //            { 
+    //                GameLose();
+    //                Debug.Log("Time is Over");
+    //                Debug.Log("Score: " + currentScore);
+    //            }
+    //        }
+    //    }
+    //}
+
+    IEnumerator CountdownTimer()
+    {
+        
+
+        while (!timeOut)
         {
+            hud.SetReamining(string.Format("{0}:{1:00}", (int)Mathf.Max((timeInSecond - timer) / 60, 0), (int)Mathf.Max((timeInSecond - timer) % 60, 0)));
+
+            timer++;
+
             if (timeInSecond - timer <= 0)
             {
                 timeOut = true;
                 if (currentScore >= targetScore)
                 {
+                    hud.SetScore(currentScore);
                     GameWin();
                 }
                 else
-                { 
+                {
                     GameLose();
                     Debug.Log("Time is Over");
-                    Debug.Log("Score: " + currentScore);
                 }
             }
+
+            yield return new WaitForSeconds(1);
         }
+
+        
     }
 
-    //public override void OnPieceCleared(GamePiece piece)
-    //{
-    //    base.OnPieceCleared(piece);
-    //    if (timeInSecond > 0) 
-    //    {
-    //    }
-    //}
 }
