@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=270 height=480 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=405 height=720 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -63,7 +63,7 @@
         frameworkUrl: buildUrl + "/WebGLBuild.framework.js.br",
         codeUrl: buildUrl + "/WebGLBuild.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
+        companyName: "Oktay Ürekli",
         productName: "Match3",
         productVersion: "1.0",
         showBanner: unityShowBanner,
@@ -103,8 +103,8 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "270px";
-        canvas.style.height = "480px";
+        canvas.style.width = "405px";
+        canvas.style.height = "720px";
       }
 
       loadingBar.style.display = "block";
